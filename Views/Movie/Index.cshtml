@@ -1,0 +1,45 @@
+﻿@model IList<Movie>
+@{
+    ViewData["Title"] = "Movie";
+}
+<h2>Movies</h2>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+              Title
+            </th>
+            <th>
+                ReleaseDate
+            </th>
+             <th>
+                Genre
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>
+                    <!-- @item.title -->
+                    @Html.DisplayFor(_ => item.title)
+                </td>
+                <td>
+                    @Html.DisplayFor(_ => item.ReleaseDate)
+                </td>
+                <td>
+                     @Html.DisplayFor(_ => item.Genre)
+                </td>
+                <td>
+                    |<a asp-action="Edit" asp-route-id="@item.id">Edit</a>|
+                    <a asp-action="Detail" asp-route-id="@item.id">Detail</a>|
+                    <a asp-action="Delete" asp-route-id="@item.id">Delete</a>|
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
